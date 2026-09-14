@@ -1,0 +1,62 @@
+services:
+  postgres: 
+    image: postgres:16 
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck: 
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+  airflow-init:
+    image: apache/airflow:2.10.3
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+    command:
+      - bash
+      - -c
+      - |
+        airflow db migrate
+        airflow users create \
+          --username admin \
+          --firstname "Mohammed Mehdi" \
+          --lastname Saibat \
+          --role Admin \
+          --email mohammedmehdisaibat@gmail.com \
+          --password weather123
+  airflow-webserver:
+    image: apache/airflow:2.10.3
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+        AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+    volumes: 
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    ports: 
+      - "8080:8080"
+    command: ["airflow", "webserver"]
+  airflow-scheduler:
+    image: apache/airflow:2.10.3
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+    volumes: 
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    command: ["airflow", "scheduler"]
+volumes:
+  postgres_data:
