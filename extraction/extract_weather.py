@@ -22,7 +22,7 @@ for _, city in cities.iterrows():
         "timezone": "Africa/Casablanca"
     }
 
-    response = requests.get(url, params=params)
+    response = requests.get(url, params=params, timeout=5)
 
     if response.status_code == 200:
         results.append(
@@ -38,7 +38,8 @@ for _, city in cities.iterrows():
 
     
     with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=4)
-
+        json.dump(results, f, indent=5)
+    
     print("Extraction finished!")
     print(f"Saved to {output_file}")
+    
