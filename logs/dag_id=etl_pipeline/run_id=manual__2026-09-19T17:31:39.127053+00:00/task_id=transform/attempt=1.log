@@ -1,0 +1,77 @@
+[2026-09-19T17:32:24.537+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-09-19T17:32:24.545+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.transform manual__2026-09-19T17:31:39.127053+00:00 [queued]>
+[2026-09-19T17:32:24.548+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.transform manual__2026-09-19T17:31:39.127053+00:00 [queued]>
+[2026-09-19T17:32:24.548+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-09-19T17:32:24.554+0000] {taskinstance.py:2889} INFO - Executing <Task(_PythonDecoratedOperator): transform> on 2026-09-19 17:31:39.127053+00:00
+[2026-09-19T17:32:24.560+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=508) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-09-19T17:32:24.561+0000] {standard_task_runner.py:72} INFO - Started process 532 to run task
+[2026-09-19T17:32:24.563+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'transform', 'manual__2026-09-19T17:31:39.127053+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/dags.py', '--cfg-path', '/tmp/tmp6bhywo9l']
+[2026-09-19T17:32:24.564+0000] {standard_task_runner.py:105} INFO - Job 7: Subtask transform
+[2026-09-19T17:32:24.595+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline.transform manual__2026-09-19T17:31:39.127053+00:00 [running]> on host 514ec548aec8
+[2026-09-19T17:32:24.651+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='transform' AIRFLOW_CTX_EXECUTION_DATE='2026-09-19T17:31:39.127053+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-19T17:31:39.127053+00:00'
+[2026-09-19T17:32:24.652+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-09-19T17:32:24.654+0000] {logging_mixin.py:190} INFO - Transforming data...
+[2026-09-19T17:32:24.655+0000] {logging_mixin.py:190} INFO - /opt/***/data/bronze/weather_raw.json
+[2026-09-19T17:32:24.656+0000] {logging_mixin.py:190} INFO - Loaded 120 cities from bronze.
+[2026-09-19T17:32:24.657+0000] {logging_mixin.py:190} INFO - Created 840 weather records
+[2026-09-19T17:32:24.663+0000] {logging_mixin.py:190} INFO - Missing values: city                             0
+latitude                         0
+longitude                        0
+date                             0
+temperature_max                  0
+temperature_min                  0
+precipitation_sum                0
+precipitation_probability_max    0
+wind_speed_max                   0
+wind_gusts_max                   0
+weather_code                     0
+dtype: int64
+[2026-09-19T17:32:24.664+0000] {logging_mixin.py:190} INFO - Duplicate records: 0
+[2026-09-19T17:32:24.664+0000] {logging_mixin.py:190} INFO - 0 invalid data chunks were found! []
+[2026-09-19T17:32:24.668+0000] {logging_mixin.py:190} INFO - City coordinate mismatches: 0
+[2026-09-19T17:32:24.678+0000] {logging_mixin.py:190} INFO - Silver Data saved to /opt/***/data/silver/weather_silver.parquet
+[2026-09-19T17:32:24.678+0000] {logging_mixin.py:190} INFO - Silver records: 840
+[2026-09-19T17:32:24.678+0000] {logging_mixin.py:190} INFO - Silver columns: 11
+[2026-09-19T17:32:24.686+0000] {logging_mixin.py:190} INFO - Loaded 840 silver records.
+[2026-09-19T17:32:24.686+0000] {logging_mixin.py:190} INFO - Silver columns: 11
+[2026-09-19T17:32:24.687+0000] {logging_mixin.py:190} INFO - City table created.
+[2026-09-19T17:32:24.687+0000] {logging_mixin.py:190} INFO - Number of cities: 120
+[2026-09-19T17:32:24.689+0000] {logging_mixin.py:190} INFO - Temperature categories created.
+[2026-09-19T17:32:24.690+0000] {logging_mixin.py:190} INFO - temperature_category
+Hot        541
+Extreme    273
+Normal      26
+Cold         0
+Name: count, dtype: int64
+[2026-09-19T17:32:24.690+0000] {logging_mixin.py:190} INFO - Percipitaion categories created.
+[2026-09-19T17:32:24.691+0000] {logging_mixin.py:190} INFO - precipitation_category
+None        792
+Light        45
+Moderate      3
+Heavy         0
+Name: count, dtype: int64
+[2026-09-19T17:32:24.691+0000] {logging_mixin.py:190} INFO - Wind speed categories created.
+[2026-09-19T17:32:24.693+0000] {logging_mixin.py:190} INFO - <bound method IndexOpsMixin.value_counts of 0          Calm
+1          Calm
+2          Calm
+3          Calm
+4          Calm
+         ...   
+835        Calm
+836    Moderate
+837        Calm
+838        Calm
+839    Moderate
+Name: wind_category, Length: 840, dtype: category
+Categories (4, object): ['Calm' < 'Moderate' < 'Strong' < 'Extreme']>
+[2026-09-19T17:32:24.699+0000] {logging_mixin.py:190} INFO - Risk score calculated.
+[2026-09-19T17:32:24.702+0000] {logging_mixin.py:190} INFO - Gold parquet files saved successefully.
+[2026-09-19T17:32:24.702+0000] {logging_mixin.py:190} INFO - Cities gold records: 120
+[2026-09-19T17:32:24.702+0000] {logging_mixin.py:190} INFO - Weather gold records: 840
+[2026-09-19T17:32:24.702+0000] {logging_mixin.py:190} INFO - Data transformed successefully.
+[2026-09-19T17:32:24.702+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-09-19T17:32:24.712+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-09-19T17:32:24.712+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=transform, run_id=manual__2026-09-19T17:31:39.127053+00:00, execution_date=20260919T173139, start_date=20260919T173224, end_date=20260919T173224
+[2026-09-19T17:32:24.734+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-09-19T17:32:24.746+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-09-19T17:32:24.747+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
