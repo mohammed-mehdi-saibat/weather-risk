@@ -13,11 +13,13 @@ services:
       retries: 5
   airflow-init:
     image: apache/airflow:2.10.3
+    user: "${AIRFLOW_UID:-1000}:0"
     depends_on:
       postgres:
         condition: service_healthy
     environment:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      PYTHONPATH: /opt/airflow
     command:
       - bash
       - -c
@@ -32,6 +34,7 @@ services:
           --password weather123
   airflow-webserver:
     image: apache/airflow:2.10.3
+    user: "${AIRFLOW_UID:-1000}:0"
     depends_on:
       postgres:
         condition: service_healthy
@@ -39,14 +42,20 @@ services:
         condition: service_completed_successfully
     environment:
         AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+        PYTHONPATH: /opt/airflow
     volumes: 
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
+      - ./extraction:/opt/airflow/extraction 
+      - ./transformation:/opt/airflow/transformation
+      - ./load:/opt/airflow/load
+      - ./data:/opt/airflow/data
     ports: 
       - "8080:8080"
     command: ["airflow", "webserver"]
   airflow-scheduler:
     image: apache/airflow:2.10.3
+    user: "${AIRFLOW_UID:-1000}:0"
     depends_on:
       postgres:
         condition: service_healthy
@@ -54,9 +63,14 @@ services:
         condition: service_completed_successfully
     environment:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      PYTHONPATH: /opt/airflow
     volumes: 
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
+      - ./extraction:/opt/airflow/extraction 
+      - ./transformation:/opt/airflow/transformation
+      - ./load:/opt/airflow/load
+      - ./data:/opt/airflow/data
     command: ["airflow", "scheduler"]
 volumes:
   postgres_data:
