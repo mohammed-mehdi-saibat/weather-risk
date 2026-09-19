@@ -3862,3 +3862,31 @@ IndentationError: expected an indented block after function definition on line 2
 [2026-09-19T18:16:36.045+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:16:36.044+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2026-09-19T18:16:36.054+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:16:36.054+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline to 2026-09-19 00:00:00+00:00, run_after=2026-09-20 00:00:00+00:00
 [2026-09-19T18:16:36.065+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dags.py took 0.296 seconds
+[2026-09-19T18:17:06.221+0000] {processor.py:186} INFO - Started process (PID=199) to work on /opt/airflow/dags/dags.py
+[2026-09-19T18:17:06.225+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dags.py for tasks to queue
+[2026-09-19T18:17:06.226+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:17:06.226+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dags.py
+[2026-09-19T18:17:06.469+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline' retrieved from /opt/airflow/dags/dags.py
+[2026-09-19T18:17:06.483+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:17:06.483+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-19T18:17:06.495+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:17:06.495+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline to 2026-09-19 00:00:00+00:00, run_after=2026-09-20 00:00:00+00:00
+[2026-09-19T18:17:06.506+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dags.py took 0.288 seconds
+[2026-09-19T18:17:36.689+0000] {processor.py:186} INFO - Started process (PID=201) to work on /opt/airflow/dags/dags.py
+[2026-09-19T18:17:36.692+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dags.py for tasks to queue
+[2026-09-19T18:17:36.694+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:17:36.694+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dags.py
+[2026-09-19T18:17:36.950+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline' retrieved from /opt/airflow/dags/dags.py
+[2026-09-19T18:17:36.975+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:17:36.974+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-19T18:17:36.985+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:17:36.985+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline to 2026-09-19 00:00:00+00:00, run_after=2026-09-20 00:00:00+00:00
+[2026-09-19T18:17:36.994+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dags.py took 0.308 seconds
+[2026-09-19T18:18:07.129+0000] {processor.py:186} INFO - Started process (PID=203) to work on /opt/airflow/dags/dags.py
+[2026-09-19T18:18:07.129+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dags.py for tasks to queue
+[2026-09-19T18:18:07.130+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:18:07.130+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dags.py
+[2026-09-19T18:18:07.377+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline' retrieved from /opt/airflow/dags/dags.py
+[2026-09-19T18:18:07.394+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:18:07.393+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-19T18:18:07.405+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:18:07.405+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline to 2026-09-19 00:00:00+00:00, run_after=2026-09-20 00:00:00+00:00
+[2026-09-19T18:18:07.418+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dags.py took 0.293 seconds
+[2026-09-19T18:18:37.586+0000] {processor.py:186} INFO - Started process (PID=205) to work on /opt/airflow/dags/dags.py
+[2026-09-19T18:18:37.589+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dags.py for tasks to queue
+[2026-09-19T18:18:37.590+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:18:37.590+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dags.py
+[2026-09-19T18:18:37.853+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline' retrieved from /opt/airflow/dags/dags.py
+[2026-09-19T18:18:37.868+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:18:37.868+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-09-19T18:18:37.880+0000] {logging_mixin.py:190} INFO - [2026-09-19T18:18:37.880+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline to 2026-09-19 00:00:00+00:00, run_after=2026-09-20 00:00:00+00:00
+[2026-09-19T18:18:37.890+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dags.py took 0.308 seconds
